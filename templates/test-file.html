@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block title %}Extract Features{% endblock %} {%
+block content %}
+
+<div class="container my-3">
+  <div class="row text-center" id="modelParam">
+    <h1 class="mt-5">Test File</h1>
+    <h4 class="mb-5 mt-2">Model will predict data and display results</h4>
+  </div>
+
+  <div class="row">
+    <form id="modelForm" method="post" enctype="multipart/form-data">
+      <div class="form-toggle">
+        <div class="my-3">
+          Make sure you have extracted the features from here
+          <a href="/extract-features" target="_blank"
+            >Extracted Features</a
+          >
+        </div>
+        <div class="my-3">
+          <label for="file" class="model-label form-label">Upload File</label>
+          <input type="file" name="file" class="fileInput form-control" />
+        </div>
+      </div>
+
+      <div class="my-3">
+        <input type="hidden" name="folder_name" value="model_output" />
+      </div>
+      <button type="submit" class="submitButton modelBtn mt-4 btn btn-primary">
+        Upload
+      </button>
+      <div class="my-3">
+        <div class="message"></div>
+      </div>
+    </form>
+  </div>
+
+  <div class="model_result container my-3">
+    <div class="row">
+      <div class="col-12 mt-3" id="modelAccuracy">
+      </div>
+      <div class="col-12 mt-3" id="modelMetrics">
+      </div>
+      <div class="col-12 mt-3" id="classificationReport">
+      </div>
+      <div class="col-12 mt-3" id="classDistributionTable">
+      </div>
+      <div class="col-12 mt-3" id="modelGraphs">
+      </div>
+      <div class="col-12 mt-3" id="rocAuc">
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

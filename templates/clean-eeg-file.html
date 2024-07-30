@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Extract Features{% endblock %}
+{% block content %}
+
+<div class="container my-3">
+  <div class="row text-center">
+    <h1 class="mt-5">Clean EEG</h1>
+    <h4 class="mb-5 mt-2">Generate CSV</h4>
+  </div>
+
+  <div class="row">
+    <form
+      class="preprocessEeg"
+      action="{{ url_for('upload_file_to_s3_endpoint') }}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <div class="my-3">
+        <label for="subject" class="form-label">Enter Subject No.</label>
+        <select class="form-select" id="subject" name="subject">
+          <option selected disabled>Select Subject</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="7">7</option>
+        </select>
+      </div>
+
+      <div class="my-3">
+        <label for="session" class="form-label">Enter Session No.</label>
+        <select class="form-select" id="session" name="session">
+          <option selected disabled>Select Session</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+
+      <div class="my-3">
+        <label for="file" class="form-label">Upload File</label>
+        <input type="file" name="file" class="fileInput form-control" />
+      </div>
+
+      <div class="my-3">
+        <input type="hidden" name="folder_name" value="preprocessdata" />
+      </div>
+
+      <div class="my-3">
+        <div class="message"></div>
+      </div>
+
+      <button type="submit" class="submitButton mt-4 btn btn-primary">
+        Upload
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
